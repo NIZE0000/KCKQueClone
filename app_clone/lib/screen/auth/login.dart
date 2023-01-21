@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -12,7 +11,17 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(),
-    );
+        appBar: AppBar(title: const Text("LOGIN")),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 100,
+              width: 100,
+              child:
+                  ElevatedButton(child: const Text("Login"), onPressed: () {}),
+            )
+          ],
+        ));
   }
 }
