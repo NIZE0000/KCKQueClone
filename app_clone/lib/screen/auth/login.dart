@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -12,24 +10,71 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-        appBar: AppBar(title: const Text("LOGIN")),
+        appBar: AppBar(
+          title: const Text(
+            "ล็อกอินเข้าสู่ระบบ",
+            style: TextStyle(fontSize: 20),
+          ),
+        ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Stack(
-                children: [
-                  Image.asset("assets/images/logoonly.png"),
-                ],
+              Container(
+                height: 200,
+                width: double.infinity,
+                color: Colors.amber,
+                child: Stack(
+                  children: [
+                    Image.asset("assets/images/logoonly.png",
+                        width: 100, height: 100),
+                  ],
+                ),
               ),
-              SizedBox(
-                width: screenWidth * 0.8,
-                height: 50,
-                child: ElevatedButton(
-                    child: const Text("Login"), onPressed: () {}),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
+                child: Column(
+                  children: [
+                    const Text("ระบบจองคิวขึ้นสักการะพระพุทธบาท",
+                        style: TextStyle(fontSize: 16)),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    // TextField(),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 40,
+                      child: ElevatedButton(
+                          child: const Text("ยืนยันการเข้าสู่ระบบ",
+                              style: TextStyle(fontSize: 18)),
+                          onPressed: () {}),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text("ยังไม่มีบัญชี?"),
+                        SizedBox(
+                          height: 40,
+                          child: ElevatedButton(
+                              child: const Text("สมัครใช้งาน",
+                                  style: TextStyle(fontSize: 16)),
+                              onPressed: () {}),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 40,
+                      child: ElevatedButton.icon(
+                          label: const Text(""),
+                          icon: const Icon(Icons.login),
+                          onPressed: () {}),
+                    ),
+                  ],
+                ),
               )
             ],
           ),
