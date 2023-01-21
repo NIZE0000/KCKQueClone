@@ -1,3 +1,4 @@
+import 'package:app_clone/screen/auth/register.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -27,13 +28,15 @@ class _LoginState extends State<Login> {
                 color: Colors.amber,
                 child: Stack(
                   children: [
-                    Image.asset("assets/images/logoonly.png",
-                        width: 100, height: 100),
+                    Center(
+                      child: Image.asset("assets/images/logoonly.png",
+                          width: 150, height: 150),
+                    ),
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
+                padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
                 child: Column(
                   children: [
                     const Text("ระบบจองคิวขึ้นสักการะพระพุทธบาท",
@@ -62,7 +65,12 @@ class _LoginState extends State<Login> {
                           child: ElevatedButton(
                               child: const Text("สมัครใช้งาน",
                                   style: TextStyle(fontSize: 16)),
-                              onPressed: () {}),
+                              onPressed: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) {
+                                  return const SignUp();
+                                }));
+                              }),
                         )
                       ],
                     ),
