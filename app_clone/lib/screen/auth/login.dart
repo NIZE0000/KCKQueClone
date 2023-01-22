@@ -1,5 +1,6 @@
 import 'package:app_clone/screen/auth/register.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -25,7 +26,7 @@ class _LoginState extends State<Login> {
               Container(
                 height: 200,
                 width: double.infinity,
-                color: Colors.amber,
+                color: Colors.lightBlueAccent,
                 child: Stack(
                   children: [
                     Center(
@@ -44,7 +45,27 @@ class _LoginState extends State<Login> {
                     const SizedBox(
                       height: 20,
                     ),
-                    // TextField(),
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 15),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Email Address',
+                          hintText: 'Enter Email Address',
+                        ),
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 15),
+                      child: TextField(
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Password',
+                          hintText: 'Enter Password',
+                        ),
+                      ),
+                    ),
                     SizedBox(
                       width: double.infinity,
                       height: 40,
@@ -74,12 +95,19 @@ class _LoginState extends State<Login> {
                         )
                       ],
                     ),
+                    const Divider(),
                     SizedBox(
                       height: 40,
                       child: ElevatedButton.icon(
                           label: const Text(""),
-                          icon: const Icon(Icons.login),
+                          icon: Image.asset("assets/images/google_logo.png"),
                           onPressed: () {}),
+                    ),
+                    SignInButton(
+                      Buttons.Facebook,
+                      text: "",
+                      mini: true,
+                      onPressed: () {},
                     ),
                   ],
                 ),
