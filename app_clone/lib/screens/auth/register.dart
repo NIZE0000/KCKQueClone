@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -26,7 +25,7 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("สมัครสมาชิก"),
+        title: const Text("สมัครใช้งานระบบ"),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -88,25 +87,28 @@ class _SignUpState extends State<SignUp> {
                       }
                     },
                     obscureText: _obscureText,
-                    decoration: InputDecoration(
-                      suffixIcon: GestureDetector(
-                        child: IconButton(
-                          splashRadius: 15,
-                          icon: Icon(
-                            _obscureText
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                            color: Colors.white,
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              _obscureText = !_obscureText;
-                            });
-                          },
-                        ),
-                      ),
-                      border: const OutlineInputBorder(),
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
                       labelText: 'Password',
+                      hintText: 'Enter Password',
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  TextFormField(
+                    keyboardType: TextInputType.visiblePassword,
+                    validator: (value) {
+                      if (value!.isEmpty || value.length < 7) {
+                        return "Please enter a valid password";
+                      } else {
+                        return null;
+                      }
+                    },
+                    obscureText: _obscureText,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Confirm Password',
                       hintText: 'Enter Password',
                     ),
                   ),
