@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
             home: Scaffold(
               body: Center(
                 child: Center(
-                  child: Text('App is being initialized'),
+                  child: CircularProgressIndicator(),
                 ),
               ),
             ),
