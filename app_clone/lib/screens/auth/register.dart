@@ -72,7 +72,9 @@ class _SignUpState extends State<SignUp> {
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
                     validator: (value) {
-                      if (value!.isEmpty || !value.contains("@")) {
+                      if (value!.isEmpty ||
+                          !value.contains("@") ||
+                          !value.contains(".")) {
                         return "Please enter a valid Email adress";
                       } else {
                         return null;
@@ -95,7 +97,9 @@ class _SignUpState extends State<SignUp> {
                   TextFormField(
                     keyboardType: TextInputType.visiblePassword,
                     validator: (value) {
-                      if (value!.isEmpty || value.length < 7) {
+                      if (value!.isEmpty ||
+                          value.length < 7 ||
+                          _confirmPassword != _password) {
                         return "Please enter a valid password";
                       } else {
                         return null;
@@ -117,7 +121,9 @@ class _SignUpState extends State<SignUp> {
                   TextFormField(
                     keyboardType: TextInputType.visiblePassword,
                     validator: (value) {
-                      if (value!.isEmpty || value.length < 7) {
+                      if (value!.isEmpty ||
+                          value.length < 7 ||
+                          _confirmPassword != _password) {
                         return "Please enter a valid password";
                       } else {
                         return null;
@@ -141,7 +147,7 @@ class _SignUpState extends State<SignUp> {
                     height: 40,
                     child: ElevatedButton(
                         onPressed: _submitFormOnLogin,
-                        child: const Text("ยืนยัันการสมัครบัญชีผู้ใช้",
+                        child: const Text("ยืนยันการสมัครบัญชีผู้ใช้",
                             style: TextStyle(fontSize: 18))),
                   ),
                   const SizedBox(
