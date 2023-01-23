@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
             primaryColor: Colors.lightBlue[800],
 
             // Define the default font family.
-            fontFamily: 'Prompt',
+            // fontFamily: 'Prompt',
           ),
           debugShowCheckedModeBanner: false,
           home: const Login(),

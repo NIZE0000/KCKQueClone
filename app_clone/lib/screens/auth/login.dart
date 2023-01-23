@@ -13,6 +13,8 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _loginFormKey = GlobalKey<FormState>();
   bool _obscureText = true;
+  String _email = "";
+  String _password = "";
 
   @override
   void initState() {
@@ -24,10 +26,19 @@ class _LoginState extends State<Login> {
     super.dispose();
   }
 
-  void _submitFormOnLogin() {
+// login fuction when press the button
+  void _submitFormOnLogin() async {
     final isValid = _loginFormKey.currentState!.validate();
+
     if (isValid) {
-      _loginFormKey.currentState!.reset();
+      _loginFormKey.currentState!.save();
+      try {
+        await FirebaseAuth.instance
+            .signInWithEmailAndPassword(email: _email, password: _password);
+        _loginFormKey.currentState!.reset();
+      } on FirebaseAuthException catch (e) {
+        print(e.message);
+      }
     }
   }
 
@@ -78,7 +89,7 @@ class _LoginState extends State<Login> {
                           }
                         },
                         onSaved: (email) {
-                          email;
+                          _email = email.toString();
                         },
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
@@ -99,6 +110,9 @@ class _LoginState extends State<Login> {
                           } else {
                             return null;
                           }
+                        },
+                        onSaved: (password) {
+                          _password = password.toString();
                         },
                         obscureText: _obscureText,
                         decoration: InputDecoration(

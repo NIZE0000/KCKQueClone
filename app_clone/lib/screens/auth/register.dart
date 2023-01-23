@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {
@@ -9,16 +10,30 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   final _loginFormKey = GlobalKey<FormState>();
-  bool _obscureText = true;
+  final bool _obscureText = true;
+  String _email = "";
+  String _password = "";
+  String _confirmPassword = "";
 
   @override
   void initState() {
     super.initState();
   }
 
-  void _submitFormOnLogin() {
+// login fuction when press the button
+  void _submitFormOnLogin() async {
     final isValid = _loginFormKey.currentState!.validate();
-    if (isValid) {}
+
+    if (isValid && _confirmPassword == _password) {
+      _loginFormKey.currentState!.save();
+      try {
+        await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(email: _email, password: _password);
+        _loginFormKey.currentState!.reset();
+      } on FirebaseAuthException catch (e) {
+        print(e.message);
+      }
+    }
   }
 
   @override
@@ -64,7 +79,7 @@ class _SignUpState extends State<SignUp> {
                       }
                     },
                     onSaved: (email) {
-                      email;
+                      _email = email.toString();
                     },
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
@@ -86,6 +101,9 @@ class _SignUpState extends State<SignUp> {
                         return null;
                       }
                     },
+                    onSaved: (password) {
+                      _password = password.toString();
+                    },
                     obscureText: _obscureText,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
@@ -104,6 +122,9 @@ class _SignUpState extends State<SignUp> {
                       } else {
                         return null;
                       }
+                    },
+                    onSaved: (confirmPassword) {
+                      _confirmPassword = confirmPassword.toString();
                     },
                     obscureText: _obscureText,
                     decoration: const InputDecoration(
