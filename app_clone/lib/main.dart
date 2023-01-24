@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:app_clone/screens/auth/login.dart';
+import 'package:app_clone/user_state.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -16,50 +16,58 @@ class MyApp extends StatelessWidget {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  MyApp({super.key});
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
+        future: _initialization,
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return MaterialApp(
+              theme: ThemeData(
+                brightness: Brightness.dark,
+              ),
+              debugShowCheckedModeBanner: false,
+              home: Scaffold(
+                body: Center(
+                  child: Center(
+                    child: Text(
+                      'An error has been occured',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
+                ),
+              ),
+            );
+          }
+          // Home page init
+          if (snapshot.connectionState == ConnectionState.done) {
+            {
+              // login page init
+              return MaterialApp(
+                title: 'KCKQueue',
+                theme: ThemeData(
+                  brightness: Brightness.dark,
+                  primaryColor: Colors.lightBlue[800],
+                ),
+                debugShowCheckedModeBanner: false,
+                home: UserState(),
+              );
+            }
+          }
           return MaterialApp(
+            theme: ThemeData(
+              brightness: Brightness.dark,
+            ),
             debugShowCheckedModeBanner: false,
             home: Scaffold(
               body: Center(
-                child: Center(
-                  child: CircularProgressIndicator(),
-                ),
+                child: CircularProgressIndicator(),
               ),
             ),
           );
-        } else if (snapshot.hasError) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            home: Scaffold(
-              body: Center(
-                child: Center(
-                  child: Text('An error has been occured'),
-                ),
-              ),
-            ),
-          );
-        }
-        return MaterialApp(
-          title: 'KCKQueue',
-          theme: ThemeData(
-            // Define the default brightness and colors.
-            brightness: Brightness.dark,
-
-            // You can add the color from the seprate class here as well to maintain it well.
-            primaryColor: Colors.lightBlue[800],
-
-            // Define the default font family.
-            // fontFamily: 'Prompt',
-          ),
-          debugShowCheckedModeBanner: false,
-          home: const Login(),
-        );
-      },
-    );
+        });
   }
 }

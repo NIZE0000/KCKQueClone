@@ -18,16 +18,6 @@ class _LoginState extends State<Login> {
   String _email = "";
   String _password = "";
 
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
 // login fuction when press the button
   void _submitFormOnLogin() async {
     final isValid = _loginFormKey.currentState!.validate();
@@ -36,14 +26,16 @@ class _LoginState extends State<Login> {
       _loginFormKey.currentState!.save();
       try {
         await FirebaseAuth.instance
-            .signInWithEmailAndPassword(email: _email, password: _password);
-        _loginFormKey.currentState!.reset();
+            .signInWithEmailAndPassword(email: _email, password: _password)
+            .then((value) {
+          _loginFormKey.currentState!.reset();
 
-        // after login navigate to home page
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) {
-          return Home();
-        }));
+          // after login navigate to home page
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) {
+            return Home();
+          }));
+        });
       } on FirebaseAuthException catch (e) {
         Fluttertoast.showToast(
           msg: e.message.toString(),
