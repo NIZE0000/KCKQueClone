@@ -1,5 +1,5 @@
+import 'package:app_clone/main_page.dart';
 import 'package:app_clone/screens/auth/login.dart';
-import 'package:app_clone/screens/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -12,8 +12,8 @@ class UserState extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, userSnapshot) {
           if (userSnapshot.hasData) {
-            print('user is already signed in');
-            return Home();
+            // user is already signed in cheack
+            return MainPage();
           } else if (userSnapshot.hasError) {
             return const Scaffold(
               body: Center(
@@ -26,7 +26,7 @@ class UserState extends StatelessWidget {
               child: CircularProgressIndicator(),
             ));
           } else {
-            print('user is not signed in yet');
+            // user is not signed in yet cheack
             return const Login();
           }
         });

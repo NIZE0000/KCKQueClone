@@ -42,122 +42,125 @@ class _SignUpState extends State<SignUp> {
       appBar: AppBar(
         title: const Text("สมัครใช้งานระบบ"),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Container(
-            height: 200,
-            width: double.infinity,
-            color: Colors.lightBlueAccent,
-            child: Stack(
-              children: [
-                Center(
-                  child: Image.asset("assets/images/logoonly.png",
-                      width: 150, height: 150),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
-            child: Form(
-              key: _loginFormKey,
-              child: Column(
+      body: SingleChildScrollView(
+        reverse: true,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Container(
+              height: 200,
+              width: double.infinity,
+              color: Colors.lightBlueAccent,
+              child: Stack(
                 children: [
-                  const Text("ระบบจองคิวขึ้นสักการะพระพุทธบาท",
-                      style: TextStyle(fontSize: 16)),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  TextFormField(
-                    keyboardType: TextInputType.emailAddress,
-                    validator: (value) {
-                      if (value!.isEmpty ||
-                          !value.contains("@") ||
-                          !value.contains(".")) {
-                        return "Please enter a valid Email adress";
-                      } else {
-                        return null;
-                      }
-                    },
-                    onSaved: (email) {
-                      _email = email.toString();
-                    },
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Email Address',
-                      hintText: 'Enter Email Address',
-                      // focusedBorder: OutlineInputBorder(
-                      //     borderSide: BorderSide(color: Colors.red)),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  TextFormField(
-                    keyboardType: TextInputType.visiblePassword,
-                    validator: (value) {
-                      if (value!.isEmpty ||
-                          value.length < 7 ||
-                          _confirmPassword != _password) {
-                        return "Please enter a valid password";
-                      } else {
-                        return null;
-                      }
-                    },
-                    onSaved: (password) {
-                      _password = password.toString();
-                    },
-                    obscureText: _obscureText,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Password',
-                      hintText: 'Enter Password',
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  TextFormField(
-                    keyboardType: TextInputType.visiblePassword,
-                    validator: (value) {
-                      if (value!.isEmpty ||
-                          value.length < 7 ||
-                          _confirmPassword != _password) {
-                        return "Please enter a valid password";
-                      } else {
-                        return null;
-                      }
-                    },
-                    onSaved: (confirmPassword) {
-                      _confirmPassword = confirmPassword.toString();
-                    },
-                    obscureText: _obscureText,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Confirm Password',
-                      hintText: 'Enter Password',
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 40,
-                    child: ElevatedButton(
-                        onPressed: _submitFormOnLogin,
-                        child: const Text("ยืนยันการสมัครบัญชีผู้ใช้",
-                            style: TextStyle(fontSize: 18))),
-                  ),
-                  const SizedBox(
-                    height: 20,
+                  Center(
+                    child: Image.asset("assets/images/logoonly.png",
+                        width: 150, height: 150),
                   ),
                 ],
               ),
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
+              child: Form(
+                key: _loginFormKey,
+                child: Column(
+                  children: [
+                    const Text("ระบบจองคิวขึ้นสักการะพระพุทธบาท",
+                        style: TextStyle(fontSize: 16)),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    TextFormField(
+                      keyboardType: TextInputType.emailAddress,
+                      validator: (value) {
+                        if (value!.isEmpty ||
+                            !value.contains("@") ||
+                            !value.contains(".")) {
+                          return "Please enter a valid Email adress";
+                        } else {
+                          return null;
+                        }
+                      },
+                      onSaved: (email) {
+                        _email = email.toString();
+                      },
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Email Address',
+                        hintText: 'Enter Email Address',
+                        // focusedBorder: OutlineInputBorder(
+                        //     borderSide: BorderSide(color: Colors.red)),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    TextFormField(
+                      keyboardType: TextInputType.visiblePassword,
+                      validator: (value) {
+                        if (value!.isEmpty ||
+                            value.length < 7 ||
+                            _confirmPassword != _password) {
+                          return "Please enter a valid password";
+                        } else {
+                          return null;
+                        }
+                      },
+                      onSaved: (password) {
+                        _password = password.toString();
+                      },
+                      obscureText: _obscureText,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Password',
+                        hintText: 'Enter Password',
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    TextFormField(
+                      keyboardType: TextInputType.visiblePassword,
+                      validator: (value) {
+                        if (value!.isEmpty ||
+                            value.length < 7 ||
+                            _confirmPassword != _password) {
+                          return "Please enter a valid password";
+                        } else {
+                          return null;
+                        }
+                      },
+                      onSaved: (confirmPassword) {
+                        _confirmPassword = confirmPassword.toString();
+                      },
+                      obscureText: _obscureText,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Confirm Password',
+                        hintText: 'Enter Password',
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 40,
+                      child: ElevatedButton(
+                          onPressed: _submitFormOnLogin,
+                          child: const Text("ยืนยันการสมัครบัญชีผู้ใช้",
+                              style: TextStyle(fontSize: 18))),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
