@@ -50,7 +50,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyC-v3dVrzKZ8cZ87LkD8RwHPUnFrtWf_TM',
+    apiKey: 'AIzaSyCzFjgSD99Nl8bBA20K8vKwmzs3HyJjEpc',
     appId: '1:925494202751:web:9e16fe0c03a9aefec74a4a',
     messagingSenderId: '925494202751',
     projectId: 'app-clone-backend-e9f18',

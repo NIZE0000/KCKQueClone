@@ -11,10 +11,8 @@ class UserState extends StatelessWidget {
     return StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, userSnapshot) {
-          if (userSnapshot.data == null) {
-            return Login();
-          } else if (userSnapshot.hasData) {
-            // print('user is already signed in');
+          if (userSnapshot.hasData) {
+            print('user is already signed in');
             return Home();
           } else if (userSnapshot.hasError) {
             return const Scaffold(
@@ -27,12 +25,10 @@ class UserState extends StatelessWidget {
                 body: Center(
               child: CircularProgressIndicator(),
             ));
+          } else {
+            print('user is not signed in yet');
+            return const Login();
           }
-          return const Scaffold(
-            body: Center(
-              child: Text('Something went wrong '),
-            ),
-          );
         });
   }
 }

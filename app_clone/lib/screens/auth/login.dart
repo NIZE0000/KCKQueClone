@@ -1,9 +1,12 @@
+// ignore_for_file: sort_child_properties_last
+
 import 'package:app_clone/screens/auth/register.dart';
 import 'package:app_clone/screens/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -18,7 +21,7 @@ class _LoginState extends State<Login> {
   String _email = "";
   String _password = "";
 
-// login fuction when press the button
+  // login fuction when press the button
   void _submitFormOnLogin() async {
     final isValid = _loginFormKey.currentState!.validate();
 
@@ -45,6 +48,29 @@ class _LoginState extends State<Login> {
         );
       }
     }
+  }
+
+  // Google sign in fuction
+  Future<void> signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+
+      if (googleAuth?.accessToken != null) {
+        // create a new credential
+        final credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth?.accessToken,
+          idToken: googleAuth?.idToken,
+        );
+        UserCredential userCredential =
+            await FirebaseAuth.instance.signInWithCredential(credential);
+        if (userCredential.user != null) {
+          if (userCredential.additionalUserInfo!.isNewUser) {}
+        }
+      }
+    } on FirebaseAuthException catch (e) {}
   }
 
   @override
@@ -181,20 +207,18 @@ class _LoginState extends State<Login> {
                   ],
                 ),
               ),
-              const Divider(),
+              const SizedBox(
+                height: 20,
+              ),
               SizedBox(
-                height: 40,
-                child: ElevatedButton.icon(
-                    label: const Text(""),
-                    icon: Image.asset("assets/images/google_logo.png"),
-                    onPressed: () {}),
-              ),
-              SignInButton(
-                Buttons.Facebook,
-                text: "",
-                mini: true,
-                onPressed: () {},
-              ),
+                  height: 50,
+                  width: 50,
+                  child: ElevatedButton(
+                    child: const FaIcon(FontAwesomeIcons.google),
+                    onPressed: (() {
+                      signInWithGoogle;
+                    }),
+                  )),
             ],
           ),
         ));
