@@ -16,32 +16,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-      ),
       body: Container(),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.calendar),
-            label: 'Date',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.phone),
-            label: 'Contact',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.perm_contact_cal),
-            label: 'About',
-          ),
-        ],
-        currentIndex: 1,
-        onTap: (value) {},
-      ),
     );
   }
 }

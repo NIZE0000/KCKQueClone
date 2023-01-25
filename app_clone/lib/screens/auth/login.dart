@@ -1,5 +1,6 @@
 // ignore_for_file: sort_child_properties_last
 
+import 'package:app_clone/main_page.dart';
 import 'package:app_clone/screens/auth/register.dart';
 import 'package:app_clone/screens/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -36,7 +37,7 @@ class _LoginState extends State<Login> {
           // after login navigate to home page
           Navigator.pushReplacement(context,
               MaterialPageRoute(builder: (context) {
-            return Home();
+            return MainPage();
           }));
         });
       } on FirebaseAuthException catch (e) {
