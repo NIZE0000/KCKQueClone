@@ -29,6 +29,7 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(''),
+        elevation: 0,
       ),
       drawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll
