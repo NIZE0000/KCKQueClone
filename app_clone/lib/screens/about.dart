@@ -15,17 +15,13 @@ class About extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.network(
-                  'https://kckque.com/assets/images/org1.png',
-                  alignment: Alignment.center,
+                Image.asset(
+                  'assets/images/org8.png',
                   width: 100,
-                  height: 100,
                 ),
-                Image.network(
-                  'https://kckque.com/assets/images/org2.png',
-                  alignment: Alignment.center,
+                Image.asset(
+                  'assets/images/org7.png',
                   width: 100,
-                  height: 100,
                 ),
               ],
             ),
