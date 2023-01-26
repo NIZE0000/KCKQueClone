@@ -4,6 +4,7 @@ import 'package:app_clone/user_state.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,6 +21,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return FutureBuilder(
         future: _initialization,
         builder: (context, snapshot) {
@@ -48,8 +51,10 @@ class MyApp extends StatelessWidget {
               return MaterialApp(
                 title: 'KCKQueue',
                 theme: ThemeData(
-                  brightness: Brightness.dark,
-                  primaryColor: Colors.lightBlue[800],
+                  brightness: Brightness.light,
+                  // primaryColor: Colors.lightBlue[800],
+                  // fontFamily: 'Prompt',
+                  textTheme: GoogleFonts.promptTextTheme(textTheme),
                 ),
                 debugShowCheckedModeBanner: false,
                 home: UserState(),
