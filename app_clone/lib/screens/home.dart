@@ -1,3 +1,4 @@
+import 'package:app_clone/screens/auth/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -7,13 +8,13 @@ import 'package:carousel_slider/carousel_slider.dart';
 class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
 
-  final auth = FirebaseAuth.instance;
-
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
+  final auth = FirebaseAuth.instance;
+
   int _current = 0;
   final List<String> imageList = [
     'assets/images/sl3new.png',
@@ -67,116 +68,132 @@ class _HomeState extends State<Home> {
           }).toList(),
         ),
         //const SizedBox(height: 20),
-        Wrap(
-          children: <Widget>[
-            SizedBox(
-              width: 280,
-              height: 110,
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                child: Column(
-                  children: const <Widget>[
-                    Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: Icon(Icons.calendar_month,
-                          color: Colors.white, size: 40.0),
+        Expanded(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Wrap(
+              children: <Widget>[
+                SizedBox(
+                  width: 280,
+                  height: 110,
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
                     ),
-                    Padding(
-                      padding: EdgeInsets.all(5.0),
-                      child: Text('ข้อมูลการจองคิว'),
+                    child: Column(
+                      children: const <Widget>[
+                        Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: Icon(Icons.calendar_month,
+                              color: Colors.black, size: 40.0),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(5.0),
+                          child: Text('ข้อมูลการจองคิว'),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
+                SizedBox(
+                  width: 280,
+                  height: 110,
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    child: Column(
+                      children: const <Widget>[
+                        Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child:
+                              Icon(Icons.map, color: Colors.black, size: 40.0),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(5.0),
+                          child: Text('แผนที่การเดินทาง'),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 280,
+                  height: 110,
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    child: Column(
+                      children: const <Widget>[
+                        Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child:
+                              Icon(Icons.call, color: Colors.black, size: 40.0),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(5.0),
+                          child: Text('ติดต่อสอบถาม'),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 280,
+                  height: 110,
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    child: Column(
+                      children: const <Widget>[
+                        Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child:
+                              Icon(Icons.bed, color: Colors.black, size: 40.0),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(5.0),
+                          child: Text('โรงแรมที่พัก'),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 280,
+                  height: 110,
+                  child: GestureDetector(
+                    onTap: () {
+                      auth.signOut().then((value) => Navigator.pushReplacement(
+                              context, MaterialPageRoute(builder: (context) {
+                            return const Login();
+                          })));
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: Column(
+                        children: const <Widget>[
+                          Padding(
+                            padding: EdgeInsets.all(10.0),
+                            child: Icon(Icons.lock_open,
+                                color: Colors.black, size: 40.0),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(5.0),
+                            child: Text('ออกจากระบบ'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-            SizedBox(
-              width: 280,
-              height: 110,
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                child: Column(
-                  children: const <Widget>[
-                    Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: Icon(Icons.map, color: Colors.white, size: 40.0),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(5.0),
-                      child: Text('แผนที่การเดินทาง'),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(
-              width: 280,
-              height: 110,
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                child: Column(
-                  children: const <Widget>[
-                    Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: Icon(Icons.call, color: Colors.white, size: 40.0),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(5.0),
-                      child: Text('ติดต่อสอบถาม'),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(
-              width: 280,
-              height: 110,
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                child: Column(
-                  children: const <Widget>[
-                    Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: Icon(Icons.bed, color: Colors.white, size: 40.0),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(5.0),
-                      child: Text('โรงแรมที่พัก'),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(
-              width: 280,
-              height: 110,
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                child: Column(
-                  children: const <Widget>[
-                    Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: Icon(Icons.lock_open,
-                          color: Colors.white, size: 40.0),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(5.0),
-                      child: Text('ออกจากระบบ'),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
+          ),
         ),
       ],
     );
