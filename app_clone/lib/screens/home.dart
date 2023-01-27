@@ -1,3 +1,4 @@
+import 'package:app_clone/screens/auth/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -7,13 +8,13 @@ import 'package:carousel_slider/carousel_slider.dart';
 class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
 
-  final auth = FirebaseAuth.instance;
-
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
+  final auth = FirebaseAuth.instance;
+
   int _current = 0;
   final List<String> imageList = [
     'assets/images/sl3new.png',
@@ -27,7 +28,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-          CarouselSlider(
+        CarouselSlider(
           items: imageList.map((item) => Image.asset(item)).toList(),
           options: CarouselOptions(
             height: 200.0,
@@ -105,7 +106,8 @@ class _HomeState extends State<Home> {
                       children: const <Widget>[
                         Padding(
                           padding: EdgeInsets.all(10.0),
-                          child: Icon(Icons.map, color: Colors.black, size: 40.0),
+                          child:
+                              Icon(Icons.map, color: Colors.black, size: 40.0),
                         ),
                         Padding(
                           padding: EdgeInsets.all(5.0),
@@ -126,7 +128,8 @@ class _HomeState extends State<Home> {
                       children: const <Widget>[
                         Padding(
                           padding: EdgeInsets.all(10.0),
-                          child: Icon(Icons.call, color: Colors.black, size: 40.0),
+                          child:
+                              Icon(Icons.call, color: Colors.black, size: 40.0),
                         ),
                         Padding(
                           padding: EdgeInsets.all(5.0),
@@ -147,7 +150,8 @@ class _HomeState extends State<Home> {
                       children: const <Widget>[
                         Padding(
                           padding: EdgeInsets.all(10.0),
-                          child: Icon(Icons.bed, color: Colors.black, size: 40.0),
+                          child:
+                              Icon(Icons.bed, color: Colors.black, size: 40.0),
                         ),
                         Padding(
                           padding: EdgeInsets.all(5.0),
@@ -160,22 +164,30 @@ class _HomeState extends State<Home> {
                 SizedBox(
                   width: 280,
                   height: 110,
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    child: Column(
-                      children: const <Widget>[
-                        Padding(
-                          padding: EdgeInsets.all(10.0),
-                          child: Icon(Icons.lock_open,
-                              color: Colors.black, size: 40.0),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(5.0),
-                          child: Text('ออกจากระบบ'),
-                        ),
-                      ],
+                  child: GestureDetector(
+                    onTap: () {
+                      auth.signOut().then((value) => Navigator.pushReplacement(
+                              context, MaterialPageRoute(builder: (context) {
+                            return const Login();
+                          })));
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: Column(
+                        children: const <Widget>[
+                          Padding(
+                            padding: EdgeInsets.all(10.0),
+                            child: Icon(Icons.lock_open,
+                                color: Colors.black, size: 40.0),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(5.0),
+                            child: Text('ออกจากระบบ'),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
