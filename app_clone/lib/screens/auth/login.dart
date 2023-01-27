@@ -52,29 +52,36 @@ class _LoginState extends State<Login> {
   }
 
   // Google sign in fuction
-  // Future<void> signInWithGoogle() async {
-  //   try {
-  //     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  Future<void> signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-  //     final GoogleSignInAuthentication? googleAuth =
-  //         await googleUser?.authentication;
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
 
-  //     if (googleAuth?.accessToken != null) {
-  //       // create a new credential
-  //       final credential = GoogleAuthProvider.credential(
-  //         accessToken: googleAuth?.accessToken,
-  //         idToken: googleAuth?.idToken,
-  //       );
-  //       UserCredential userCredential =
-  //           await FirebaseAuth.instance.signInWithCredential(credential);
-  //       if (userCredential.user != null) {
-  //         if (userCredential.additionalUserInfo!.isNewUser) {}
-  //       }
-  //     }
-  //   } on FirebaseAuthException catch (e) {
-  //     print(e);
-  //   }
-  // }
+      if (googleAuth?.accessToken != null) {
+        // create a new credential
+        final credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth?.accessToken,
+          idToken: googleAuth?.idToken,
+        );
+        UserCredential userCredential =
+            await FirebaseAuth.instance.signInWithCredential(credential);
+        if (userCredential.user != null) {
+          // after login navigate to home page
+
+          // ignore: use_build_context_synchronously
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) {
+            return MainPage();
+          }));
+          if (userCredential.additionalUserInfo!.isNewUser) {}
+        }
+      }
+    } on FirebaseAuthException catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -215,15 +222,15 @@ class _LoginState extends State<Login> {
                 const SizedBox(
                   height: 20,
                 ),
-                // SizedBox(
-                //     height: 50,
-                //     width: 50,
-                //     child: ElevatedButton(
-                //       child: const FaIcon(FontAwesomeIcons.google),
-                //       onPressed: (() {
-                //         signInWithGoogle;
-                //       }),
-                //     )),
+                SizedBox(
+                    height: 50,
+                    width: 50,
+                    child: ElevatedButton(
+                      child: const FaIcon(FontAwesomeIcons.google),
+                      onPressed: (() {
+                        signInWithGoogle();
+                      }),
+                    )),
               ],
             ),
           ),
