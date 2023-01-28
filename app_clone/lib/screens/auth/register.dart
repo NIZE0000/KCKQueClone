@@ -1,3 +1,4 @@
+import 'package:app_clone/screens/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -30,6 +31,10 @@ class _SignUpState extends State<SignUp> {
         await FirebaseAuth.instance
             .createUserWithEmailAndPassword(email: _email, password: _password);
         _loginFormKey.currentState!.reset();
+        // ignore: use_build_context_synchronously
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return Home();
+        }));
       } on FirebaseAuthException catch (e) {
         print(e.message);
       }
