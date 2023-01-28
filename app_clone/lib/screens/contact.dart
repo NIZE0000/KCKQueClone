@@ -15,10 +15,12 @@ class _ContactState extends State<Contact> {
     return Scaffold(
       appBar: AppBar(
         title: TextField(
+          style: const TextStyle(color: Colors.white),
           controller: _searchController,
           decoration: const InputDecoration(
+            hintStyle: TextStyle(color: Colors.white),
             hintText: "Search",
-            prefixIcon: Icon(Icons.search),
+            prefixIcon: Icon(Icons.search, color: Colors.white),
             border: InputBorder.none,
           ),
         ),

@@ -2,7 +2,6 @@
 
 import 'package:app_clone/main_page.dart';
 import 'package:app_clone/screens/auth/register.dart';
-import 'package:app_clone/screens/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -79,7 +78,12 @@ class _LoginState extends State<Login> {
         }
       }
     } on FirebaseAuthException catch (e) {
-      print(e);
+      Fluttertoast.showToast(
+        msg: e.message.toString(),
+        gravity: ToastGravity.CENTER,
+        // webBgColor: Colors.red,
+        // backgroundColor: Colors.red,
+      );
     }
   }
 

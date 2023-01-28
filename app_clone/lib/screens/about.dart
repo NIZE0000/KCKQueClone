@@ -10,7 +10,7 @@ class About extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
         child: Column(children: [
-          Container(
+          SizedBox(
             height: 150,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,

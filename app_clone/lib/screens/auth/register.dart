@@ -1,6 +1,7 @@
 import 'package:app_clone/screens/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -33,10 +34,15 @@ class _SignUpState extends State<SignUp> {
         _loginFormKey.currentState!.reset();
         // ignore: use_build_context_synchronously
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return Home();
+          return const Home();
         }));
       } on FirebaseAuthException catch (e) {
-        print(e.message);
+        Fluttertoast.showToast(
+          msg: e.message.toString(),
+          gravity: ToastGravity.CENTER,
+          // webBgColor: Colors.red,
+          // backgroundColor: Colors.red,
+        );
       }
     }
   }
