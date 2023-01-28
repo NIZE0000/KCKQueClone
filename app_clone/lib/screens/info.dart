@@ -52,7 +52,7 @@ class _InfoState extends State<Info> {
                         ),
                         child: Container(
                           alignment: Alignment.center,
-                          height: 500,
+                          height: 505,
                           width: 500,
                           child: Column(
                             children: [
@@ -154,7 +154,7 @@ class _InfoState extends State<Info> {
                                             children: const [
                                               Icon(Icons.check, size: 20),
                                               Text(
-                                                'ยอมรับเงื่อนไขและเริ่มต้นการจอง',
+                                                'ยอมรับเงื่อนไขและเริ่มต้น',
                                                 style: TextStyle(
                                                   fontSize: 16,
                                                 ),
