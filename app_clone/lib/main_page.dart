@@ -17,10 +17,10 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   int _currentIndex = 0;
   final List<Widget> _screen = [
-    Home(),
-    Info(),
-    Contact(),
-    About(),
+    const Home(),
+    const Info(),
+    const Contact(),
+    const About(),
   ];
 
   final List<Widget> _appBar = [
