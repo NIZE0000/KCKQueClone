@@ -4,7 +4,7 @@ class Contact extends StatefulWidget {
   const Contact({Key? key}) : super(key: key);
 
   @override
-  _ContactState createState() => _ContactState();
+  State<Contact> createState() => _ContactState();
 }
 
 class _ContactState extends State<Contact> {
