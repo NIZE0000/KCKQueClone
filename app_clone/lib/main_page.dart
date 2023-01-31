@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_const
+
 import 'package:app_clone/screens/about.dart';
 import 'package:app_clone/screens/contact.dart';
 import 'package:app_clone/screens/home.dart';
@@ -42,15 +44,31 @@ class _MainPageState extends State<MainPage> {
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
+            SizedBox(
+              height: 260.0,
+              child: DrawerHeader(
+                decoration: const BoxDecoration(color: Color.fromRGBO(149, 209, 255, 1),),
+                child: Expanded(
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/ezgif.com-gif-maker.gif'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/logo.png'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    ),
+                  ),
+                ),
               ),
-              child: Text('Drawer Header'),
             ),
-            const SizedBox(
-              height: 8,
-            ),
+            const SizedBox(height: 8,),
             Container(
               padding: const EdgeInsets.only(left: 16),
               child: const Text(
@@ -155,7 +173,7 @@ class _MainPageState extends State<MainPage> {
               },
             ),
             const SizedBox(
-              height: 16,
+              height: 8,
             ),
             Container(
               padding: const EdgeInsets.only(left: 16),
@@ -169,13 +187,14 @@ class _MainPageState extends State<MainPage> {
               ),
             ),
             const SizedBox(
-              height: 16,
+              height: 8,
             ),
-            Image.network(
-              'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif',
+            SizedBox(
+            height: 90,
+            child: Image.asset(
+              'assets/images/combine_images.png',
               alignment: Alignment.center,
-              width: 150,
-              height: 150,
+            ),
             ),
           ],
         ),
