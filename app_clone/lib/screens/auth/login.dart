@@ -170,7 +170,7 @@ class _LoginState extends State<Login> {
                                   _obscureText
                                       ? Icons.visibility
                                       : Icons.visibility_off,
-                                  color: Colors.white,
+                                  color: Colors.black,
                                 ),
                                 onPressed: () {
                                   setState(() {
