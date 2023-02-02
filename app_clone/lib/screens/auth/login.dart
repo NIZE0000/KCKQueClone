@@ -108,6 +108,7 @@ class _LoginState extends State<Login> {
                   color: Colors.lightBlueAccent,
                   child: Stack(
                     children: [
+                      Image.asset('assets/images/ezgif.com-gif-maker.gif'),
                       Center(
                         child: Image.asset("assets/images/logoonly.png",
                             width: 150, height: 150),
