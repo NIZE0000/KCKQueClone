@@ -100,7 +100,7 @@ class _LoginState extends State<Login> {
           reverse: true,
           child: Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
                   height: 200,
@@ -108,7 +108,11 @@ class _LoginState extends State<Login> {
                   color: Colors.lightBlueAccent,
                   child: Stack(
                     children: [
-                      Image.asset('assets/images/ezgif.com-gif-maker.gif'),
+                      Image.asset(
+                        'assets/images/ezgif.com-gif-maker.gif',
+                        fit: BoxFit.fitWidth,
+                        width: double.infinity,
+                      ),
                       Center(
                         child: Image.asset("assets/images/logoonly.png",
                             width: 150, height: 150),
@@ -227,15 +231,27 @@ class _LoginState extends State<Login> {
                 const SizedBox(
                   height: 20,
                 ),
-                SizedBox(
-                    height: 50,
-                    width: 50,
-                    child: ElevatedButton(
-                      child: const FaIcon(FontAwesomeIcons.google),
-                      onPressed: (() {
-                        signInWithGoogle();
-                      }),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.grey[700],
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                    ),
+                  ),
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: 20,
+                    height: 60,
+                    child: const Expanded(
+                        child: FaIcon(
+                      FontAwesomeIcons.google,
+                      // size: 20,
                     )),
+                  ),
+                  onPressed: (() {
+                    signInWithGoogle();
+                  }),
+                ),
               ],
             ),
           ),

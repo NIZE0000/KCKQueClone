@@ -64,6 +64,11 @@ class _SignUpState extends State<SignUp> {
               color: Colors.lightBlueAccent,
               child: Stack(
                 children: [
+                  Image.asset(
+                    'assets/images/ezgif.com-gif-maker.gif',
+                    fit: BoxFit.fitWidth,
+                    width: double.infinity,
+                  ),
                   Center(
                     child: Image.asset("assets/images/logoonly.png",
                         width: 150, height: 150),
