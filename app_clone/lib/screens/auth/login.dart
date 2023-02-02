@@ -242,11 +242,10 @@ class _LoginState extends State<Login> {
                     alignment: Alignment.center,
                     width: 20,
                     height: 60,
-                    child: const Expanded(
-                        child: FaIcon(
+                    child: const FaIcon(
                       FontAwesomeIcons.google,
                       // size: 20,
-                    )),
+                    ),
                   ),
                   onPressed: (() {
                     signInWithGoogle();
