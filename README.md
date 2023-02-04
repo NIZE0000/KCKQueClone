@@ -16,4 +16,5 @@ Cloning app with flutter framework
 ``` 
   flutter pub get
 ``` 
+you need to connect firebase before build or run it
 
