@@ -1,6 +1,11 @@
 # KCKQueClone
 Cloning app with flutter framework
 
+## Preview
+  Uploading KCKQueClone.mp4…
+
+
+
 ## What is done?
 - clone the login page and function using firebase: done.
 - naviagation in the page: almost done.
